@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function CardCourses({
     id = 1,
     imageUrl = "/assets/images/thumbnails/th-1.png",
-    name ="Responsive Design Triclorem Lorem, ipsum dolor.",
+    name ="Mastering React TypeScript 7 Website Development",
     jumlahStudent = 554,
     category = "Programming"
 }) {
