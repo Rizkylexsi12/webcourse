@@ -12,6 +12,7 @@ import CourseDetail from "../pages/Manager/course-detail"
 import CreateContentCourse from "../pages/Manager/create-content-course"
 import ManageCoursePreviewPage from "../pages/Manager/course-preview"
 import ManageStudentsPage from "../pages/Manager/students"
+import StudentPage from "../pages/Student/student-overview"
 
 const router = createBrowserRouter([
     {
@@ -71,6 +72,20 @@ const router = createBrowserRouter([
     {
       path: '/success-payment',
       element: <SuccessPayment />
+    },
+    {
+      path: '/student',
+      element: <LayoutDashboard isAdmin={false}/>,
+      children: [
+        {
+          index: true,
+          element: <StudentPage />
+        },
+        {
+          path: '/student/detail-course/:id',
+          element: <ManageCoursePreviewPage />
+        }
+      ]
     }
   ])
 
