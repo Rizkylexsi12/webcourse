@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom"
 import ManagerhomePage from "../pages/Manager/home"
-import Memberhome from "../pages/Member"
 import SignIn from "../pages/SignIn"
 import Signup from "../pages/SignUp"
 import Pricing from "../pages/Pricing"
@@ -18,10 +17,6 @@ const router = createBrowserRouter([
     {
       path: '/',
       element: <SignIn />
-    },
-    {
-      path: '/member',
-      element: <Memberhome />
     },
     {
       path: '/manager/signin',
