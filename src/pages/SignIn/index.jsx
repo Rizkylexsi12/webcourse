@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom"
 import Navbar from "../../components/navbar"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { signInSchema } from "../../utils/zodSchema"
 
 function Signin(){
+    const {register, handleSubmit, formState: {errors}} = useForm({
+        resolver: zodResolver(signInSchema)
+    })
+
     return(
         <div className="relative flex flex-col flex-1 p-[10px]">
             <div className="absolute w-[calc(100%-20px)] min-h-[calc(100vh-20px)] h-[calc(100%-20px)] bg-[#060A23] -z-10 rounded-[20px]">
@@ -22,7 +29,7 @@ function Signin(){
                     </Link>
                 </div>
             </nav>
-            <form action="pricing.html" className="flex flex-col w-[400px] h-fit rounded-[20px] border border-[#262A56] p-[30px] gap-[30px] bg-[#080A2A] m-auto">
+            <form onSubmit={handleSubmit(onSubmit)} action="pricing.html" className="flex flex-col w-[400px] h-fit rounded-[20px] border border-[#262A56] p-[30px] gap-[30px] bg-[#080A2A] m-auto">
                 <div>
                     <h1 className="font-bold text-[26px] leading-[39px] text-white">Welcome Back!</h1>
                     <p className="text-[#6B6C7F]">Manage your employees easily</p>
@@ -30,13 +37,15 @@ function Signin(){
                 <hr className="border-[#262A56]"/>
                 <div className="flex items-center gap-3 w-full rounded-full border p-[14px_20px] transition-all duration-300 focus-within:border-[#8661EE] focus-within:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#070B24] border-[#24283E] shadow-[-10px_-6px_10px_0_#181A35_inset]">
                     <img src="/assets/images/icons/sms-white.svg" className="w-6 h-6 flex shrink-0" alt="icon"/>
-                    <input type="email" name="email" id="email" className="appearance-none outline-none !bg-transparent w-full font-semibold text-white placeholder:font-normal placeholder:text-[#6B6C7F]" placeholder="Write your email address"/>
+                    <input type="email" name="email" id="email" className="appearance-none outline-none !bg-transparent w-full font-semibold text-white placeholder:font-normal placeholder:text-[#6B6C7F]" placeholder="Write your email address" {...register('email')}/>
                 </div>
+                {errors.name?.message && <p className="text-red-500 text-sm -mt-5 pl-5">{errors.name?.message}</p>}
                 <div>
                     <div className="flex items-center gap-3 w-full rounded-full border p-[14px_20px] transition-all duration-300 focus-within:border-[#8661EE] focus-within:shadow-[-10px_-6px_10px_0_#7F33FF_inset] bg-[#070B24] border-[#24283E] shadow-[-10px_-6px_10px_0_#181A35_inset]">
                         <img src="/assets/images/icons/key-white.svg" className="w-6 h-6 flex shrink-0" alt="icon"/>
-                        <input type="password" name="password" id="password" className="appearance-none outline-none !bg-transparent w-full font-semibold text-white placeholder:font-normal placeholder:text-[#6B6C7F]" placeholder="Type your secure password"/>
+                        <input type="password" name="password" id="password" className="appearance-none outline-none !bg-transparent w-full font-semibold text-white placeholder:font-normal placeholder:text-[#6B6C7F]" placeholder="Type your secure password" {...register('password')}/>
                     </div>
+                    {errors.name?.message && <p className="text-red-500 text-sm -mt-5 pl-5">{errors.name?.message}</p>}
                     <div className="flex justify-end mt-[10px]">
                         <Link href="#" className="text-sm leading-[21px] text-[#662FFF] hover:underline">Forgot Password</Link>
                     </div>
