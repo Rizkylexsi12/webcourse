@@ -29,7 +29,7 @@ function Signin(){
                     </Link>
                 </div>
             </nav>
-            <form onSubmit={handleSubmit(onSubmit)} action="pricing.html" className="flex flex-col w-[400px] h-fit rounded-[20px] border border-[#262A56] p-[30px] gap-[30px] bg-[#080A2A] m-auto">
+            <form onSubmit={handleSubmit(onsubmit)} action="pricing.html" className="flex flex-col w-[400px] h-fit rounded-[20px] border border-[#262A56] p-[30px] gap-[30px] bg-[#080A2A] m-auto">
                 <div>
                     <h1 className="font-bold text-[26px] leading-[39px] text-white">Welcome Back!</h1>
                     <p className="text-[#6B6C7F]">Manage your employees easily</p>
